@@ -104,7 +104,11 @@ class Test extends ModBase {
 }
 ```
 
+### 框架启动时
 
+- 名称：`@OnStart`
+- 命名空间：`ZM\Annotation\Swoole\OnStart`
+- 用途：效果同 `@SwooleEventAfter("workerStart")`
 
 ## CQHTTP 事件对应注解类
 
@@ -266,7 +270,7 @@ use ZM\Annotation\CQ\CQBefore;
 use ZM\Annotation\CQ\CQMessage;
 class Test extends ModBase {
     /**
-     * @CQBefore(CQMessage::class)
+     * @CQBefore("message")
      */
     public function filter(){
         if(mb_strpos($this->getMessage(), "谷歌") !== false) return false;
@@ -331,6 +335,24 @@ use ZM\ModBase;
 use ZM\Annotation\Module\SaveBuffer;
 /**
  * @SaveBuffer("test_list", "Test")
+ */
+class Test extends ModBase { }
+```
+
+### InitBuffer
+- 名称：`@InitBuffer`
+- 命名空间：`ZM\Annotation\Module\InitBuffer`
+- 参数：`buf_name`
+- 作用：将缓存变量名字为 `buf_name` 的缓存初始化为空数组，供代码使用。关于缓存类，见 [缓存类](/guide/component.html#zmbuf-缓存类)
+
+示例：
+```php
+<?php
+namespace Module\Example;
+use ZM\ModBase;
+use ZM\Annotation\Module\InitBuffer;
+/**
+ * @InitBuffer("my_variable_name")
  */
 class Test extends ModBase { }
 ```

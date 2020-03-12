@@ -15,8 +15,7 @@ module.exports = {
     themeConfig: {
         repo: 'zhamao-robot/zhamao-framework',
         docsDir: 'docs',
-        editLinks: true,
-        editLinkText: '在 GitHub 上编辑此页',
+        editLinks: false,
         lastUpdated: '上次更新',
         activeHeaderLinks: false,
         nav: [
@@ -37,7 +36,8 @@ module.exports = {
                         'annotation',
                         'http-server',
                         'component',
-                        'database'
+                        'database',
+                        'websocket-server'
                     ]
                 }
             ] 

@@ -41,7 +41,7 @@ class Main extends ModBase { }
 
 简而言之，模块类的命名空间应该为 `Module\{你的子目录名}`，类名应该与 `xx.php` 的 `xx` 相同。同时，只要是用到需要注解的类，一定要继承 `ModBase` 基类，否则无法正常使用注解类和模块的基类方法。
 
-::: warning 警告
+::: danger 警告
 
 如果没有遵守上方的规则的话，在加载框架时就会报错，无法找到对应的类。因为框架的注解解析依赖于文件名和命名空间。
 
@@ -53,8 +53,8 @@ class Main extends ModBase { }
 
 | 变量名称                | 类型                                               | 可用的注解事件                                               |
 | ----------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
-| `$this->server`         | `\Swoole\Server` 或 `\Swoole\Websocket\Server`     | `@SwooleEventAt("message")`<br />`@SwooleEventAt("close")`<br />`@SwooleEventAt("open")`<br />`@SwooleEventAfter("workerStart")`<br />`@所有CQ事件` |
-| `$this->frame`          | `\Swoole\WebSocket\Frame`                          | `@所有CQ事件`<br />`@SwooleEventAt("message")`               |
+| `$this->server`         | `\Swoole\Server` 或 `\Swoole\Websocket\Server`     | `@SwooleEventAt("message")`<br />`@SwooleEventAt("close")`<br />`@SwooleEventAt("open")`<br />`@SwooleEventAfter("workerStart")` |
+| `$this->frame`          | `\Swoole\WebSocket\Frame`                          | `@SwooleEventAt("message")`               |
 | `$this->data`           | CQHTTP 发来的事件的数组                            | `@所有CQ事件`                                                |
 | `$this->request`        | `\Swoole\Http\Request`                             | `@SwooleEventAt("request")`<br />`@RequestMapping()`<br />`@SwooleEventAt("open")` |
 | `$this->response`       | `\ZM\Http\Response` 继承于 `\Swoole\Http\Response` | `@SwooleEventAt("request")`<br />`@RequestMapping()`         |

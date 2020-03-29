@@ -58,6 +58,12 @@ php-mbstring，php-json，php-ctype，php-swoole，php-curl
 
 :::
 
+### Docker 安装
+
+```bash
+docker build -t zm .
+```
+
 
 
 ## 酷Q with CQHTTP 插件

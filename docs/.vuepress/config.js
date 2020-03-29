@@ -19,7 +19,8 @@ module.exports = {
         lastUpdated: '上次更新',
         activeHeaderLinks: false,
         nav: [
-            { text: '指南', link: '/guide/' }
+            { text: '指南', link: '/guide/' },
+            { text: '更新日志', link: '/update.md' }
         ],
         sidebar: {
             '/guide/': [
@@ -40,7 +41,7 @@ module.exports = {
                         'websocket-server'
                     ]
                 }
-            ] 
+            ]
         },
     }
 }

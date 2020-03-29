@@ -293,7 +293,9 @@ class Test extends ModBase {
 - 参数：`cq_event`，`level`
 - 函数返回值：`true` 或 `false`。如果返回 `false` 则不继续执行其他低等级的 `@CQAfter` 绑定的事件函数。
 
+## 运行流程
 
+![diagram](../.vuepress/public/images/diagram2.png)
 
 ## 模块类相关注解类（非事件）
 

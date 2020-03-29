@@ -336,7 +336,7 @@ namespace Module\Example;
 use ZM\ModBase;
 use ZM\Annotation\Module\SaveBuffer;
 /**
- * @SaveBuffer("test_list", "Test")
+ * @SaveBuffer(buf_name="test_list",sub_folder="Test")
  */
 class Test extends ModBase { }
 ```

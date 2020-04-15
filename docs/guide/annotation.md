@@ -126,7 +126,7 @@ CQHTTP 事件是指 CQHTTP 插件发来的 Event 事件，被框架处理后触�
 参数和 CQHTTP 插件中提供的文档内支持的参数完全一致，有：
 
 - *message_type：消息类型，有 `private`，`discuss`，`group`
-- user_id，group_id，discuss_id，message，raw_message，level
+- user_id，group_id，discuss_id，message，raw_message，level（level 见前面的 Swoole 事件激活写的帮助）
 
 下面这个例子的注释用途就是：
 

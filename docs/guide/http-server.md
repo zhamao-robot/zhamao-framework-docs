@@ -178,6 +178,6 @@ public function onThrowing(?Exception $e) {
 
 框架内依赖了 Swoole 官方推荐的 `Saber`，可直接在任意位置使用。这里是 [Saber 地址](https://github.com/swlib/saber)。
 
-对于 GET 请求 和 POST 请求，框架内也封装了轻量的函数调用，如果使用 `file_get_contents` 类和 `curl_exec` 之类的网络请求函数，在 `1.1` 版本之后开启了一键协程化，也可以正常使用。Saber 和框架内的轻量化函数都是协程优化的，也都可以正常使用。
+对于 GET 请求 和 POST 请求，框架内也封装了轻量的函数调用，如果使用 `file_get_contents` 类和 `curl_exec` 之类的网络请求函数，在 `1.1` 版本之后开启了 [一键协程化](https://wiki.swoole.com/#/runtime?id=常见的hook列表)，也可以正常使用。Saber 和框架内的轻量化函数都是协程优化的，也都可以正常使用。
 
 框架内的轻量函数见组件中 [ZMRequest 组件](/guide/component.html#zmrequest-http-客户端)

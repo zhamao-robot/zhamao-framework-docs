@@ -43,6 +43,8 @@ brew install php
 #安装Swoole
 (sudo) pecl install swoole
 echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}')
+
+# 安装Swoole时，如果提示你选择是否支持 ssl/mysqlnd，这两个建议选择yes。
 ```
 
 ```bash

@@ -14,6 +14,7 @@
 ├── src/                    ---- 框架根目录
 │   ├── Custom/             ---- **可修改** 用户自定义添加的框架内对象
 │   │   ├── Annotation/     ---- 用户自定义添加的注解类
+│   │   ├── global_function.php     ---- 用户自定义添加的全局函数
 │   │   └── Connection/     ---- 用户自定义添加的 WebSocket 连接类型类
 │   ├── Framework/          ---- 框架引导和全局代码，不可修改
 │   │   ├── Console.php     ---- 控制台输入输出的管理类
@@ -44,6 +45,7 @@
 │       ├── ModBase.php             ---- 用户编写的模块类的基类
 │       └── Utils/                      ---- 工具类的目录
 │           ├── DataProvider.php        ---- 提供文件读写、缓存读写等功能
+│           ├── ZMRequest.php           ---- HTTP 客户端工具类
 │           ├── SQLPool.php             ---- 数据库连接池对象
 │           ├── ScheduleManager.php     ---- 计时器管理类
 │           └── ZMUtil.php              ---- 其他杂项函数集合的类

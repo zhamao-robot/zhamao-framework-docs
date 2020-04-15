@@ -1,3 +1,6 @@
+---
+sidebarDepth: 2
+---
 # WebSocket 服务器
 
 炸毛框架不仅仅完全支持 HTTP 的各类服务扩展，还支持 WebSocket 各类服务的扩展。

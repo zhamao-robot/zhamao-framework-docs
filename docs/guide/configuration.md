@@ -4,21 +4,22 @@
 
 框架的配置文件是一个由 `$config` 的全局数组变量进行管理的。
 
-| 配置名称                 | 说明                                             | 默认值                    |
-| :----------------------- | ------------------------------------------------ | ------------------------- |
-| `host`                   | 框架监听的地址                                   | 0.0.0.0                   |
-| `port`                   | 框架监听的端口                                   | 20001                     |
-| `http_reverse_link`      | 框架开到公网或外部的 HTTP 反代链接               | 见配置文件                |
-| `zm_data`                | 框架的配置文件、日志文件等文件目录               | `./` 下的 `zm_data/`      |
-| `config_dir`             | 存放各个模块配置文件的目录                       | `zm_data` 下的 `coonfig/` |
-| `crash_dir`              | 存放崩溃和运行日志的目录                         | `zm_data` 下的 `crash/`   |
-| `swoole`                 | 对应 Swoole server 中 set 的参数，参考Swoole文档 | 见子表 `swoole`           |
-| `sql_config`             | MySQL 数据库连接信息                             | 见子表 `sql_config`       |
-| `access_token`           | CQHTTP 连接约定的token，留空则无                 | 空                        |
-| `http_header`            | HTTP 请求自定义返回的header                      | 见配置文件                |
-| `http_default_code_page` | HTTP服务器在指定状态码下回复的默认页面           | 见配置文件                |
-| `init_atomics`           | 框架启动时初始化的原子计数器列表                 | 见配置文件                |
-| `auto_save_interval`     | DataProvider 提供的缓存自动保存间隔(秒)          | 900                       |
+| 配置名称                 | 说明                                             | 默认值                       |
+| :----------------------- | ------------------------------------------------ | ---------------------------- |
+| `host`                   | 框架监听的地址                                   | 0.0.0.0                      |
+| `port`                   | 框架监听的端口                                   | 20001                        |
+| `http_reverse_link`      | 框架开到公网或外部的 HTTP 反代链接               | 见配置文件                   |
+| `zm_data`                | 框架的配置文件、日志文件等文件目录               | `./` 下的 `zm_data/`         |
+| `config_dir`             | 存放各个模块配置文件的目录                       | `zm_data` 下的 `coonfig/`    |
+| `crash_dir`              | 存放崩溃和运行日志的目录                         | `zm_data` 下的 `crash/`      |
+| `swoole`                 | 对应 Swoole server 中 set 的参数，参考Swoole文档 | 见子表 `swoole`              |
+| `sql_config`             | MySQL 数据库连接信息                             | 见子表 `sql_config`          |
+| `access_token`           | CQHTTP 连接约定的token，留空则无                 | 空                           |
+| `http_header`            | HTTP 请求自定义返回的header                      | 见配置文件                   |
+| `http_default_code_page` | HTTP服务器在指定状态码下回复的默认页面           | 见配置文件                   |
+| `init_atomics`           | 框架启动时初始化的原子计数器列表                 | 见配置文件                   |
+| `auto_save_interval`     | DataProvider 提供的缓存自动保存间隔(秒)          | 900                          |
+| `context_class`          | 上下文所定义的类，待上下文完善后见对应文档       | `\ZM\Context\Context::class` |
 
 ### 子表 **swoole**
 

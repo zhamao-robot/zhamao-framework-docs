@@ -20,6 +20,7 @@ module.exports = {
         activeHeaderLinks: false,
         nav: [
             { text: '指南', link: '/guide/' },
+            { text: 'FAQ', link: '/FAQ/' },
             { text: '更新日志', link: '/update.md' }
         ],
         sidebar: {

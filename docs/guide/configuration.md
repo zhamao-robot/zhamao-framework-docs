@@ -20,6 +20,7 @@
 | `init_atomics`           | 框架启动时初始化的原子计数器列表                 | 见配置文件                   |
 | `auto_save_interval`     | DataProvider 提供的缓存自动保存间隔(秒)          | 900                          |
 | `context_class`          | 上下文所定义的类，待上下文完善后见对应文档       | `\ZM\Context\Context::class` |
+| `static_file_server`     | 静态文件服务器配置项                             | 见子表 `static_file_server`  |
 
 ### 子表 **swoole**
 
@@ -43,4 +44,12 @@
 | `sql_password`     | 数据库连接密码                      |                   |
 | `sql_enable_cache` | 开启查询器缓存，详见 [数据库缓存]() | true              |
 | `sql_reset_cache`  | 数据库缓存释放时间(格式：md)        | 0300（凌晨3点整） |
+
+### 子表 static_file_server
+
+| 配置名称         | 说明                   | 默认值                         |
+| ---------------- | ---------------------- | ------------------------------ |
+| `status`         | 是否开启静态文件服务器 | false                          |
+| `document_root`  | 静态文件的根目录       | `{WORKING_DIR}/resources/html` |
+| `document_index` | 默认索引的文件名列表   | `["index.html"]`               |
 

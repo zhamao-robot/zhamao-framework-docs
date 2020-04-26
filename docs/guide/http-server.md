@@ -203,3 +203,12 @@ public function onThrowing(?Exception $e) {
 对于 GET 请求 和 POST 请求，框架内也封装了轻量的函数调用，如果使用 `file_get_contents` 类和 `curl_exec` 之类的网络请求函数，在 `1.1` 版本之后开启了 [一键协程化](https://wiki.swoole.com/#/runtime?id=常见的hook列表)，也可以正常使用。Saber 和框架内的轻量化函数都是协程优化的，也都可以正常使用。
 
 框架内的轻量函数见组件中 [ZMRequest 组件](/guide/component.html#zmrequest-http-客户端)
+
+## 静态文件服务器
+
+从 `1.1.2` 版本开始，框架支持了静态文件的访问。如需使用，则需要先到配置文件中配置相应的 `static_file_server` 参数，这里是 [配置文件](/guide/configuration.html)。
+
+设置完成后，访问框架的地址，加上文件名，例如在默认路径下自带的 `resources/html/static.html` 文件，通过访问 `http://127.0.0.1:20001/static.html` 就可以访问了。
+
+你可以将前后端分离的前端部分放入这里进行分发和部署。
+

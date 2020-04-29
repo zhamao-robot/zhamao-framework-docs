@@ -43,7 +43,7 @@ module.exports = {
                 },
                 {
                     title: '框架组件',
-                    collapsable: true,
+                    collapsable: false,
                     children: [
                         'component/',
                         'component/zmrobot',

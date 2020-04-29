@@ -50,6 +50,7 @@ module.exports = {
                         'component/cqapi',
                         'component/cqcode',
                         'component/data-provider',
+                        'component/console',
                         'component/zmutil',
                         'component/zmbuf',
                         'component/save-buffer',

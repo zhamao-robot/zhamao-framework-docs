@@ -37,9 +37,23 @@ module.exports = {
                         'create-module',
                         'annotation',
                         'http-server',
-                        'component',
                         'database',
                         'websocket-server'
+                    ]
+                },
+                {
+                    title: '框架组件',
+                    collapsable: true,
+                    children: [
+                        'component/',
+                        'component/zmrobot',
+                        'component/cqapi',
+                        'component/cqcode',
+                        'component/data-provider',
+                        'component/zmutil',
+                        'component/zmbuf',
+                        'component/save-buffer',
+                        'component/zmrequest'
                     ]
                 }
             ]

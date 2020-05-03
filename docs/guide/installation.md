@@ -9,7 +9,7 @@
 3. 从 GitHub 拉取框架
 4. Composer 更新依赖
 
-### Linux / macOS / Win10 (WSL) 
+### Linux / Win10 (WSL) 
 
 ```bash
 #安装PHP >= 7.2（CLI + dev 版本）
@@ -24,24 +24,37 @@ apt-get install \
 	php7.2-json \
 	php7.2 \
 	php-pear
-#安装Composer
-apt-get install composer
 
-#RHEL(CentOS >= 7)
+#CentOS(需要 >= 7) 使用的指令
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum makecache fast
-yum install php72w-devel.x86_64 php72w-mbstring.x86_64 php72w-pear.noarch gcc gcc-c++ -y
-
-#macOS（需安装 homebrew）
-brew install php
+yum install php72w-devel.x86_64 php72w-mbstring.x86_64 php72w-pear.noarch gcc gcc-c++ openssl-devel -y
 
 #其他发行版可自行 Google 或 Bing 查询安装方法
 ```
 
 ```bash
-#安装Swoole
+#安装Composer (Debian/Ubuntu)
+apt-get install composer
+```
+
+
+
+```bash
+# 方法1: PECL 安装 Swoole
 (sudo) pecl install swoole
+
+# 方法2: 源码编译安装 Swoole (使用最新版，把版本号替换为最新版即可)
+wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz
+tar -zxvf v4.5.0.tar.gz
+cd swoole-src-4.5.0
+phpize
+./configure --enable-openssl
+make -j2
+make install
+
+# 添加 extension 到 php.ini 文件，这行是自动找到位置并写入到最后一行的命令
 echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}')
 
 # 安装Swoole时，如果提示你选择是否支持 ssl/mysqlnd，这两个建议选择yes。
@@ -60,13 +73,21 @@ php-mbstring，php-json，php-ctype，php-swoole，php-curl
 
 :::
 
-### Docker 安装
+## Docker 安装框架
 
 ```bash
+cd zhamao-framework/
+# 构建容器
 docker build -t zm .
+# 直接启动
+docker run --rm -it -p 20001:20001 -v $(pwd):/app/zhamao-framework zm
 ```
 
+::: warning 注意
 
+在 Docker 中运行框架，如果提示 composer auth 问题，直接回车即可。启动后建议谨慎使用 Ctrl+C 键盘中止程序，可以输入 `stop` 命令。如果 Ctrl+C 导致没有退出并卡死，可以使用 `docker ps` + `docker stop` 两个指令找到 id 并停止容器。
+
+:::
 
 ## 酷Q with CQHTTP 插件
 

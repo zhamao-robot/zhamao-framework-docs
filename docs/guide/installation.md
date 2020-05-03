@@ -71,6 +71,18 @@ composer update
 
 php-mbstring，php-json，php-ctype，php-swoole，php-curl
 
+swoole (版本 >= 4.3)
+
+:::
+
+::: warning 系统可能存在的问题
+
+对于 CentOS，建议在部署框架环境或使用 Docker 前临时将 SELinux 关闭，以免造成不必要的麻烦。
+
+对于 macOS，使用 homebrew 安装 PHP 环境要注意 openssl 安装时需要将 openssl 的环境变量临时声明才能正常使用 openssl。
+
+对于 cygwin 的 Windows 用户，可能未来新版本的 Swoole 兼容性不高，需要注意潜在的各种问题。
+
 :::
 
 ## Docker 安装框架

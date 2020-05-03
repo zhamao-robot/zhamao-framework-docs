@@ -13,38 +13,26 @@
 
 ```bash
 #安装PHP >= 7.2（CLI + dev 版本）
-#Debian、Ubuntu
-apt-get install software-properties-common
-add-apt-repository ppa:ondrej/php
-apt-get update
-apt-get install \
-	php7.2 \
-	php7.2-dev \
-	php7.2-mbstring \
-	php7.2-json \
-	php7.2 \
-	php-pear
+#Debian、Ubuntu（一句话安装php和swoole）
+apt-get update && apt-get install -y software-properties-common && \
+	add-apt-repository ppa:ondrej/php && \
+	apt-get update && \
+	apt-get install php7.3 php7.3-dev php7.3-mbstring gcc make openssl \
+		php7.3-mbstring php7.3-json php7.3-ctype php7.3-curl -y && \
+	apt-get install wget composer -y && \
+	wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz && \
+	tar -zxvf v4.5.0.tar.gz && \
+	cd swoole-src-4.5.0/ && \
+	phpize7.3 && ./configure --enable-openssl && make -j2 && make install && \
+	(echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}'))
 
 #CentOS(需要 >= 7) 使用的指令
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 yum makecache fast
 yum install php72w-devel.x86_64 php72w-mbstring.x86_64 php72w-pear.noarch gcc gcc-c++ openssl-devel -y
-
-#其他发行版可自行 Google 或 Bing 查询安装方法
-```
-
-```bash
-#安装Composer (Debian/Ubuntu)
-apt-get install composer
-```
-
-
-
-```bash
 # 方法1: PECL 安装 Swoole
 (sudo) pecl install swoole
-
 # 方法2: 源码编译安装 Swoole (使用最新版，把版本号替换为最新版即可)
 wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz
 tar -zxvf v4.5.0.tar.gz
@@ -53,17 +41,19 @@ phpize
 ./configure --enable-openssl
 make -j2
 make install
-
 # 添加 extension 到 php.ini 文件，这行是自动找到位置并写入到最后一行的命令
 echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}')
 
-# 安装Swoole时，如果提示你选择是否支持 ssl/mysqlnd，这两个建议选择yes。
+#其他发行版可自行 Google 或 Bing 查询安装方法
 ```
+
+下载框架
 
 ```bash
 #部署框架
 git clone https://github.com/zhamao-robot/zhamao-framework.git
 #拉取依赖
+cd zhamao-framework/
 composer update
 ```
 
@@ -130,6 +120,8 @@ docker run --rm -it \
 cd zhamao-framework
 php bin/start
 ```
+
+二合一容器安装后，你的 酷Q 目录在当前目录下的 `coolq-data/`，你的框架代码目录在 `zhamao-framework/`。要注意，这两个文件夹的权限都是 `1000:1000`，如果不是可能会导致 Docker 内的程序权限不足。或者将文件夹设置为 777 权限也可以。
 
 ::: tip 提示
 

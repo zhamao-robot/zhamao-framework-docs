@@ -87,6 +87,12 @@ swoole (版本 >= 4.3)
 
 ## Docker 安装框架
 
+对于不想部署到主机环境的情况，推荐直接使用 Docker。
+
+### 框架单独的 Docker 构建
+
+如果你已经部署了 CQHTTP 的 Docker 容器并运行，或者你有多个 酷Q 要连接到一个框架，推荐单独构建一个容器运行框架：
+
 ```bash
 cd zhamao-framework/
 # 构建容器
@@ -94,6 +100,42 @@ docker build -t zm .
 # 直接启动
 docker run --rm -it -p 20001:20001 -v $(pwd):/app/zhamao-framework zm
 ```
+
+### 框架 + CQHTTP Docker 混合
+
+如果你只有一个 酷Q，并且只是用来开发机器人，可以直接使用作者托管的二合一镜像部署，运行 Docker 后的命令需在 vnc 中右键桌面打开终端进行操作：
+
+```bash
+mkdir coolq-data zhamao-framework
+chmod 777 zhamao-framework
+docker run --rm -it \
+	-v $(pwd)/coolq-data:/home/user/coolq \
+	-v $(pwd)/zhamao-framework:/home/user/zhamao-framework \
+	-p 9000:9000 \
+	-e CQHTTP_WS_REVERSE_URL=ws://127.0.0.1:20001/ \
+	-e CQHTTP_USE_WS_REVERSE=true \
+	-e CQHTTP_WS_REVERSE_USE_UNIVERSAL_CLIENT=true \
+	-e FORCE_ENV=true \
+	-e VNC_PASSWD=yourpass \
+	zmbot/coolq-zm
+
+# 通过浏览器进入 http://你的地址:9000/ 进入vnc
+# yourpass是登录密码，建议修改成其他的8位密码
+# 下面的命令在 vnc 里面的终端输入
+
+# 第一次安装时进入后运行一下
+./start.sh
+
+#以后启动 Docker 后运行框架的方法
+cd zhamao-framework
+php bin/start
+```
+
+::: tip 提示
+
+二合一 Docker 是基于 CQHTTP 的 Docker 容器进行构建，本 Docker 只在原 Docker 环境中配置了 Swoole 等运行框架的环境，其他关于 Docker 的问题情见 [CQHTTP - Docker](https://cqhttp.cc/docs/#/Docker)。
+
+:::
 
 ::: warning 注意
 

@@ -20,6 +20,7 @@ module.exports = {
         activeHeaderLinks: false,
         nav: [
             { text: '指南', link: '/guide/' },
+            { text: '进阶', link: '/advanced/' },
             { text: 'FAQ', link: '/FAQ.md' },
             { text: '更新日志', link: '/update.md' }
         ],
@@ -55,6 +56,15 @@ module.exports = {
                         'component/zmbuf',
                         'component/save-buffer',
                         'component/zmrequest'
+                    ]
+                }
+            ],
+            '/advanced/': [
+                {
+                    title: '进阶',
+                    collapsable: false,
+                    children: [
+                        ''
                     ]
                 }
             ]

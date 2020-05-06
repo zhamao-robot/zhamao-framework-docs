@@ -64,18 +64,16 @@ class Main extends ModBase { }
 
 这个是说明在各种不同事件触发后，会写到模块类基类中的类成员变量，方便对不同事件的快速响应。 下方是一个表，列出了所有可使用的成员变量对应注解事件的关系。这里建议先阅读下一章 **注解和事件** 再阅读本节。
 
-| 变量名称                | 类型                                               | 可用的注解事件                                               |
-| ----------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
-| `$this->server`         | `\Swoole\Server` 或 `\Swoole\Websocket\Server`     | `@SwooleEventAt("message")`<br />`@SwooleEventAt("close")`<br />`@SwooleEventAt("open")`<br />`@SwooleEventAfter("workerStart")` |
-| `$this->frame`          | `\Swoole\WebSocket\Frame`                          | `@SwooleEventAt("message")`               |
-| `$this->data`           | CQHTTP 发来的事件的数组                            | `@所有CQ事件`                                                |
-| `$this->request`        | `\Swoole\Http\Request`                             | `@SwooleEventAt("request")`<br />`@RequestMapping()`<br />`@SwooleEventAt("open")` |
-| `$this->response`       | `\ZM\Http\Response` 继承于 `\Swoole\Http\Response` | `@SwooleEventAt("request")`<br />`@RequestMapping()`         |
-| `$this->fd`             | int，连接的 fd 号                                  | `@SwooleEventAt("close")`                                    |
-| `$this->worker_id`      | int                                                | `@SwooleEventAfter("workerStart")`                           |
-| `$this->connection`     | 基于 `\ZM\Connection\WSConnection` 的对象          | `@所有CQ事件`<br />`@SwooleEventAt("message")`<br />`@SwooleEventAt("open")` |
-| `$this->handle_type`    | int，此模块此函数调用的标记模式                    | 所有在模块内的事件                                           |
-| `$this->block_continue` | bool，用于标注断言，true 时不执行同类低等级的模块  | 所有在模块内的事件                                           |
+| 变量名称            | 类型                                               | 可用的注解事件                                               |
+| ------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| `$this->server`     | `\Swoole\Server` 或 `\Swoole\Websocket\Server`     | `@SwooleEventAt("message")`<br />`@SwooleEventAt("close")`<br />`@SwooleEventAt("open")`<br />`@SwooleEventAfter("workerStart")` |
+| `$this->frame`      | `\Swoole\WebSocket\Frame`                          | `@SwooleEventAt("message")`                                  |
+| `$this->data`       | CQHTTP 发来的事件的数组                            | `@所有CQ事件`                                                |
+| `$this->request`    | `\Swoole\Http\Request`                             | `@SwooleEventAt("request")`<br />`@RequestMapping()`<br />`@SwooleEventAt("open")` |
+| `$this->response`   | `\ZM\Http\Response` 继承于 `\Swoole\Http\Response` | `@SwooleEventAt("request")`<br />`@RequestMapping()`         |
+| `$this->fd`         | int，连接的 fd 号                                  | `@SwooleEventAt("close")`                                    |
+| `$this->worker_id`  | int                                                | `@SwooleEventAfter("workerStart")`                           |
+| `$this->connection` | 基于 `\ZM\Connection\WSConnection` 的对象          | `@所有CQ事件`<br />`@SwooleEventAt("message")`<br />`@SwooleEventAt("open")` |
 
 
 

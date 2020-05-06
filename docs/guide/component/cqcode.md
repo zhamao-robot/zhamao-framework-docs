@@ -21,7 +21,7 @@ $this->reply(CQ::at("all") . " 我是来自领导的消息，收到请回复！"
 
 ## CQ::face()
 
-发送 QQ 原生的黄脸表情。这里是 [ID 对照表](/face_list.html)。
+发送 QQ 原生的黄脸表情。这里是 <a href="/face_list.html" _block="true">ID 对照表</a>。
 
 - `$id`: 表情的 id 号
 

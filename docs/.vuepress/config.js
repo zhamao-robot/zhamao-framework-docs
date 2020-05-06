@@ -37,6 +37,7 @@ module.exports = {
                         'configuration',
                         'create-module',
                         'annotation',
+                        'context',
                         'http-server',
                         'database',
                         'websocket-server'

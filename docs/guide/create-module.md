@@ -40,7 +40,7 @@
 <?php
 namespace Module;
 use ZM\ModBase;
-class Entertain extends ModBase { }
+class Entertain extends ModBase { } 
 ```
 
 第二种方式构建时，`Main.php` 应该这样写：
@@ -52,13 +52,30 @@ use ZM\ModBase;
 class Main extends ModBase { }
 ```
 
-简而言之，模块类的命名空间应该为 `Module\{你的子目录名}`，类名应该与 `xx.php` 的 `xx` 相同。同时，只要是用到需要注解的类，一定要继承 `ModBase` 基类，否则无法正常使用注解类和模块的基类方法。
+简而言之，模块类的命名空间应该为 `Module\{你的子目录名}`，类名应该与 `xx.php` 的 `xx` 相同。
 
 ::: danger 警告
 
-如果没有遵守上方的规则的话，在加载框架时就会报错，无法找到对应的类。因为框架的注解解析依赖于文件名和命名空间。
+如果没有遵守上方的类和文件命名规则的话（文件名、文件夹名和命名空间的统一性），在加载框架时就会报错，无法找到对应的类。因为框架的注解解析依赖于文件名和命名空间。
 
 :::
+
+同时，只要是用到需要注解的类，可以选择继承 `ModBase` 基类，也可以不继承。继承后可以使用基类方法，如果不继承基类也可以使用上下文。在 1.3.0 版本后，我们推荐 **不使用** 继承 ModBase，全部使用上下文代替。具体请看 [上下文](/guide/context.html)。
+
+```php
+<?php
+namespace Module\Example;
+class Hello { //从 1.3.0 版本开始，可以不继承，完全使用上下文对象。
+  /**
+   * @CQCommand("你好")
+   */
+  public function hello() {
+    context()->reply("你好啊，".context()->getUserId());
+  }
+}
+```
+
+
 
 ## 基类变量
 
@@ -81,7 +98,7 @@ class Main extends ModBase { }
 
 ::: tip 提示
 
-基类方法为方便各个事件函数内使用的工具函数，例如聊天机器人的快捷回复，获取发送此消息的人的 QQ 等。
+基类方法为方便各个事件函数内使用的工具函数，例如聊天机器人的快捷回复，获取发送此消息的人的 QQ 等。但是现在你最好使用 [上下文](/guide/context.html)，上下文对象兼容以下所有基类的方法。
 
 :::
 
@@ -170,7 +187,7 @@ function yourName(){
 
 ## 编写第一个功能
 
-通过上方的了解，我们现在进行一个最简单的随机数功能的开发吧！
+通过上方的了解和上下文的了解，我们现在进行一个最简单的随机数功能的开发吧！
 
 首先我们先确定自身想要处理的格式，例如 `随机数 1 100`，或者 `从1到100的随机数`。
 
@@ -179,21 +196,20 @@ function yourName(){
 ```php
 <?php
 namespace Module\Entertain;
-use ZM\ModBase;
 use ZM\Annotation\CQ\CQCommand;
 
-class RandNum extends ModBase {
+class RandNum  {
     /**
      * @CQCommand("随机数")
      * @CQCommand(regexMatch="*从*到*的随机数")
      */
     public function randNum($arg) {
       	// 获取第一个数字类型的参数
-        $num1 = $this->getArgs($arg, ZM_MATCH_NUMBER, "请输入第一个数字");
+        $num1 = context()->getArgs($arg, ZM_MATCH_NUMBER, "请输入第一个数字");
       	// 获取第二个数字类型的参数
-        $num2 = $this->getArgs($arg, ZM_MATCH_NUMBER, "请输入第二个数字");
+        $num2 = context()->getArgs($arg, ZM_MATCH_NUMBER, "请输入第二个数字");
         // 回复用户结果
-        $this->reply("随机数是：".mt_rand(intval($num1), intval($num2)));
+        context()->reply("随机数是：".mt_rand(intval($num1), intval($num2)));
     }
 }
 ```

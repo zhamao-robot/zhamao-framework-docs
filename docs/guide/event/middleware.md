@@ -8,11 +8,11 @@
 
 如果以宏观角度来说中间件的执行流程，则为下图：
 
-![Untitled Diagram](/Users/jerry/project/git-project/zhamao-framework-docs/docs/.vuepress/public/images/diagram3.png)
+![Untitled Diagram](../../.vuepress/public/images/diagram3.png)
 
 对于一个注解事件的函数绑定多个中间件的流程为：
 
-![Untitled Diagram-2](/Users/jerry/project/git-project/zhamao-framework-docs/docs/.vuepress/public/images/diagram4.png)
+![Untitled Diagram-2](../../.vuepress/public/images/diagram4.png)
 
 ## 定义中间件
 

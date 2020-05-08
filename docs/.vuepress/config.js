@@ -36,11 +36,21 @@ module.exports = {
                         'dir-tree',
                         'configuration',
                         'create-module',
-                        'annotation',
                         'context',
                         'http-server',
                         'database',
                         'websocket-server'
+                    ]
+                },
+                {
+                    title: '注解事件',
+                    collapsable: false,
+                    children: [
+                        'event/',
+                        'event/CQ',
+                        'event/swoole',
+                        'event/module',
+                        'event/middleware'
                     ]
                 },
                 {

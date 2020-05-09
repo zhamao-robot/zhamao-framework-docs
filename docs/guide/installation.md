@@ -15,15 +15,15 @@
 #安装PHP >= 7.2（CLI + dev 版本）
 #Debian、Ubuntu（一句话安装php和swoole）
 apt-get update && apt-get install -y software-properties-common && \
-	add-apt-repository ppa:ondrej/php && \
+  add-apt-repository ppa:ondrej/php && \
 	apt-get update && \
-	apt-get install php7.3 php7.3-dev php7.3-mbstring gcc make openssl \
-		php7.3-mbstring php7.3-json php7.3-ctype php7.3-curl -y && \
+	apt-get install php php-dev php-mbstring gcc make openssl \
+		php-mbstring php-json php-curl php-mysql -y && \
 	apt-get install wget composer -y && \
 	wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz && \
 	tar -zxvf v4.5.0.tar.gz && \
 	cd swoole-src-4.5.0/ && \
-	phpize7.3 && ./configure --enable-openssl && make -j2 && make install && \
+	phpize && ./configure --enable-openssl --enable-mysqlnd && make -j2 && make install && \
 	(echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}'))
 
 #CentOS(需要 >= 7) 使用的指令
@@ -59,7 +59,7 @@ composer update
 
 ::: tip 框架需要额外安装的 PHP 扩展汇总
 
-php-mbstring，php-json，php-ctype，php-swoole，php-curl
+php-mbstring，php-json，php-ctype，php-swoole，php-curl，php-mysql（PDO 驱动的 mysqlnd）
 
 swoole (版本 >= 4.3)
 
@@ -72,6 +72,8 @@ swoole (版本 >= 4.3)
 对于 macOS，使用 homebrew 安装 PHP 环境要注意 openssl 安装时需要将 openssl 的环境变量临时声明才能正常使用 openssl。
 
 对于 cygwin 的 Windows 用户，可能未来新版本的 Swoole 兼容性不高，需要注意潜在的各种问题。
+
+在 1.3.1 版本开始，框架将连接池的驱动从 Swoole 官方客户端连接变为 PDO 连接，因为 Swoole 提供的客户端已停止维护。但更换的同时也给框架增加了 PHP 扩展的依赖，如果你选择升级到 1.3.1 以后的版本，并要使用 MySQL 连接池的话，请务必安装 mysql 扩展！
 
 :::
 

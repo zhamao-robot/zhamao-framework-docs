@@ -35,7 +35,7 @@ sidebarDepth: 2
 - `getQQ()`：获取此链接对应机器人的 QQ 号码
 
 ### 连接对象使用示例
-下面是一个调用 CQAPI 的示例，需要使用传入的连接对象：
+下面是一个调用 CQConnection 的示例，我们从对象里获取当前机器人的 QQ 号码：
 ```php
 <?php
 namespace Module\Example;

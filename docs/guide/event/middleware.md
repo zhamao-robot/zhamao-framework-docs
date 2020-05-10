@@ -77,7 +77,7 @@ public function pong(){
 /**
  * @Middleware("timer")
  */
-class Hello extends ModBase {
+class Hello {
   /**
    * @RequestMapping("/test/ping")
    */

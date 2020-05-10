@@ -37,25 +37,25 @@
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\Http\Controller;
 use ZM\Annotation\Http\RequestMapping;
 /**
  * @Controller("/api")
  */
-class Test extends ModBase {
+class Test {
     /**
      * @RequestMapping("/index")
      */
     public function index(){
         //context()->getResponse()->end("This is API index page");
-        $this->response->end("This is API index page");
+        ctx()->getResponse()->end("This is API index page");
     }
   	/**
   	 * @RequestMapping("/ping")
   	 */
     public function ping(){
-        $this-response->end("pong");
+        ctx()->getResponse()->end("pong");
     }
 }
 ```
@@ -74,7 +74,7 @@ class Test extends ModBase {
 
 ```php
 public function index($arg) {
-    $this->response->end("Your param 'name' is ".$arg["name"]);
+    ctx()->getResponse()->end("Your param 'name' is ".$arg["name"]);
 }
 ```
 

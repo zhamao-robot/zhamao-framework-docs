@@ -33,10 +33,9 @@ QQ 收到消息后触发的事件对应注解。
 <?php
 namespace Module\Example;
 
-use ZM\ModBase;
 use ZM\Annotation\CQ\CQMessage;
 
-class Hello extends ModBase {
+class Hello {
     /**
      * @CQMessage(message_type="private",user_id=123456)
      */
@@ -66,15 +65,15 @@ class Hello extends ModBase {
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\CQ\CQCommand;
 
-class Hello extends ModBase {
+class Hello {
     /**
      * @CQCommand("疫情")
      */
     public function virus($arg){
-        $city = $this->getArgs($arg, ZM_MATCH_ALL, "请输入你的城市名称");
+        $city = ctx()->getArgs($arg, ZM_MATCH_ALL, "请输入你的城市名称");
         return "城市 ".$city." 的疫情状况如下："."{这里假装是疫情接口返回的数据}";
     }
 }
@@ -165,16 +164,16 @@ class Hello extends ModBase {
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\CQ\CQBefore;
 use ZM\Annotation\CQ\CQMessage;
-class Test extends ModBase {
+class Test {
     /**
      * @CQBefore("message")
      */
     public function filter(){
         // 可用于敏感词，如政治相关的词语不响应其他模块
-        if(mb_strpos($this->getMessage(), "谷歌") !== false) return false;
+        if(mb_strpos(ctx()->getMessage(), "谷歌") !== false) return false;
         else return true;
     }
 }

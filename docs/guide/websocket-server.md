@@ -40,17 +40,13 @@ sidebarDepth: 2
 <?php
 namespace Module\Example;
 
-use ZM\ModBase;
-use ZM\Annotation\CQ\CQCommand;
-use ZM\API\CQAPI;
-
-class Hello extends ModBase {
+class Hello {
     /**
-     * @CQCommand("状态")
+     * @CQCommand("机器人QQ")
      */
     public function status(){
-        $r = CQAPI::get_status($this->connection, [], true);
-        return "API请求结果：".json_encode($r,128|256);
+        $r = ctx()->getConnection();
+        return "当前机器人QQ：".$r->getQQ();
     }
 }
 ```

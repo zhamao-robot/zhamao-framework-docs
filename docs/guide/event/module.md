@@ -14,7 +14,7 @@ use ZM\Annotation\Module\Closed;
 /**
  * @Closed()
  */
-class ModuleA extends ModBase{
+class ModuleA {
   /**
    * @CQCommand("你好")
    */
@@ -38,12 +38,12 @@ class ModuleA extends ModBase{
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\Module\SaveBuffer;
 /**
  * @SaveBuffer(buf_name="test_list",sub_folder="Test")
  */
-class Test extends ModBase { }
+class Test { }
 ```
 
 使用：发送 **你好**，并记录调用此功能的人的时间并统计次数

@@ -17,10 +17,9 @@ sidebarDepth: 2
 <?php
 namespace Module\Example;
 
-use ZM\ModBase;
 use ZM\Annotation\CQ\CQCommand;
 
-class Hello extends ModBase
+class Hello
 {
     /**
      * @CQCommand(match="你好")
@@ -48,7 +47,6 @@ class Hello extends ModBase
 <?php
 namespace Module\Example;
 
-use ZM\ModBase;
 use ZM\Annotation\CQ\CQCommand;
 use ZM\Annotation\Module\Closed;
 
@@ -56,7 +54,7 @@ use ZM\Annotation\Module\Closed;
  * Class Hello
  * @Closed()
  */
-class Hello extends ModBase { }
+class Hello { }
 ```
 
 
@@ -94,10 +92,9 @@ Swoole 事件指 Swoole server 本身的触发事件，比如 HTTP 响应等。
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
 use Framework\Console;
 use ZM\Annotation\Swoole\SwooleEventAfter;
-class Test extends ModBase {
+class Test {
     /**
      * @SwooleEventAfter(type="workerStart",level=100)
      */
@@ -140,21 +137,20 @@ CQHTTP 事件是指 CQHTTP 插件发来的 Event 事件，被框架处理后触�
 <?php
 namespace Module\Example;
 
-use ZM\ModBase;
 use ZM\Annotation\CQ\CQMessage;
 
-class Main extends ModBase {
+class Main {
     /**
      * @CQMessage(message_type="private",user_id=123456)
      */
   	public function test(){
-        return "你和机器人私聊发送了这些文本：".$this->getMessage();
+        return "你和机器人私聊发送了这些文本：".ctx()->getMessage();
     }
     /**
      * @CQMessage(message="hello")
      */
     public function hello(){
-        return "你好啊，".$this-getUserId();
+        return "你好啊，".ctx()->getUserId();
     }
 }
 ```
@@ -210,15 +206,15 @@ class Main extends ModBase {
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\CQ\CQCommand;
 
-class Test extends ModBase {
+class Test {
     /**
      * @CQCommand("疫情")
      */
     public function virus($arg){
-        $city = $this->getArgs($arg, ZM_MATCH_ALL, "请输入你的城市名称");
+        $city = ctx()->getArgs($arg, ZM_MATCH_ALL, "请输入你的城市名称");
         return "城市 ".$city." 的疫情状况如下："."{这里假装是疫情接口返回的数据}";
     }
 }
@@ -268,15 +264,15 @@ class Test extends ModBase {
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\CQ\CQBefore;
 use ZM\Annotation\CQ\CQMessage;
-class Test extends ModBase {
+class Test {
     /**
      * @CQBefore("message")
      */
     public function filter(){
-        if(mb_strpos($this->getMessage(), "谷歌") !== false) return false;
+        if(mb_strpos(ctx()->getMessage(), "谷歌") !== false) return false;
         else return true;
     }
 }
@@ -314,12 +310,12 @@ class Test extends ModBase {
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\Module\Closed;
 /**
  * @Closed()
  */
-class Test extends ModBase { }
+class Test { }
 ```
 
 
@@ -336,12 +332,12 @@ class Test extends ModBase { }
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\Module\SaveBuffer;
 /**
  * @SaveBuffer(buf_name="test_list",sub_folder="Test")
  */
-class Test extends ModBase { }
+class Test { }
 ```
 
 ### InitBuffer
@@ -354,12 +350,12 @@ class Test extends ModBase { }
 ```php
 <?php
 namespace Module\Example;
-use ZM\ModBase;
+
 use ZM\Annotation\Module\InitBuffer;
 /**
  * @InitBuffer("my_variable_name")
  */
-class Test extends ModBase { }
+class Test { }
 ```
 
 ## HTTP 请求事件触发注解
@@ -385,8 +381,8 @@ HTTP 请求触发类的注解在 [HTTP 服务器](/guide/http-server.html) 章�
  * @SwooleEventAt(type="request",rule="containsGet:username")
  */
 public function onLogin(){
-    $r = $this->request->get["username"];
-    $this->response->end("你好，".$r."，你已经成功登录");
+    $r = ctx()->getRequest()->get["username"];
+    ctx()->getResponse()->end("你好，".$r."，你已经成功登录");
 }
 ```
 

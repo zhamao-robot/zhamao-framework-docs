@@ -87,7 +87,7 @@ php bin/start server --log-debug # 以 debug 等级 启动框架
 返回：彩色的字符串。
 
 - **string**: 要变颜色的字符串
-- **color**: 要变的颜色，分类见下方颜色表。
+- **color**: 要变的颜色。支持 `red`，`green`，`yellow`，`reset`，`blue`，`gray`，`gold`，`pink`，`lightblue`，`lightlightblue`
 
 ```php
 Console::log("This is normal msg. (0)");
@@ -159,3 +159,8 @@ echo hello
 color green 我是绿色的字
 ```
 
+## MOTD
+
+在 1.4 版本开始，框架支持启动时的 motd 内容修改。
+
+文件位置：`config/motd.txt`

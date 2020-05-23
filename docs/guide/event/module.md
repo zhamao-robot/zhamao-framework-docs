@@ -73,3 +73,21 @@ public function times() {
 ```
 
 使用了 SaveBuffer 后，与直接使用 ZMBuf 类不同的是，框架会自动把此变量保存到硬盘，即使框架退出，计算机关闭或内存炸掉了，只要重启，就会自动往 ZMBuf 中加载之前保存的缓存变量。而直接使用 ZMBuf 没有声明 SaveBuffer 时，框架停止运行后数据即丢失。
+
+## LoadBuffer()
+
+> 在 1.4 版本起可用。
+
+与上方 SaveBuffer 类似，但 LoadBuffer 不会将更改保存回文件，仅仅是加载到内存中，通过 ZMBuf 调用使用。如果原本文件不存在，则初始化为空数组。
+
+```php
+<?php
+namespace Module\Example;
+
+use ZM\Annotation\Module\SaveBuffer;
+/**
+ * @LoadBuffer(buf_name="test_list",sub_foler="Test")
+ */
+class Test{}
+```
+

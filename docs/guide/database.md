@@ -22,6 +22,8 @@ DB::table("admin")->insert(['admin_name', 'admin_password'])->save();
 
 其中 `insert` 的参数是插入条目的数据列表。假设 admin 表有 `name`，`password` 两列。
 
+> 自增 ID 插入 0 即可。
+
 ### 删除数据
 
 ```php

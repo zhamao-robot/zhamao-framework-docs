@@ -3,6 +3,41 @@ sidebar: auto
 ---
 # 更新日志
 
+## v1.4
+
+> 更新时间：2020.5.23
+
+- 新增：自定义 motd
+- 新增：debug_mode 下断点调试功能
+- 新增：`@OnSave` 注解，储存自动保存的变量时事件激活
+- 新增：Swoole 版本检测
+- 新增：全局函数，以 `zm_` 开头的，详情见文档
+- 新增：`@LoadBuffer` 注解，只加载内存不自动保存的变量
+- 新增：局部静态文件服务
+- 新增：mysqlnd 扩展状态检测
+- 更新：将终端输入更换为多进程
+- 更新：将数据库连接池变更为 Swoole 官方的连接池，需要 Swoole 版本 >= 4.4.13
+- 更新：提升注解绑定的事件函数的执行效率
+- 修复：上下文 `getConnection()` 的 fd 无法获取的 bug
+- 修复：MySQL 长链接 gone away 自动重连的问题
+- 修复：MySQL 查询构造器无 WHERE 语句时会造成的 bug
+- 修复：调整各项资源初始化前后顺序
+
+不可逆修改：你需要重新执行一次 `composer update` 或重新拉取一次 Docker Image，因为 composer 依赖发生了变化。
+
+## v1.3.1
+
+> 更新时间：2020.5.10
+
+- 修复：DataProvider 下 setJsonData 新建文件夹的问题
+- 优化：默认 / 页面显示 `Hello Zhamao!` 文字
+- 优化：Exception 和 Fatal error 报错机制的改进
+- 修复：计时器没有上下文环境，发不了 API 的 bug
+
+❗ 下面是框架升级需要手动进行的变更：
+
+- 更改 MySQL 客户端为原生 PDO mysqlnd，如果之前使用 Docker 启动，则需使用新的 Dockerfile 构建。如果安装在本机，需安装 php-mysql 扩展。本次更新不影响框架内的 API，不需要更改任何代码。
+
 ## v1.3.0
 
 > 更新时间：2020.5.8

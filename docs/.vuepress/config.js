@@ -39,7 +39,8 @@ module.exports = {
                         'context',
                         'http-server',
                         'database',
-                        'websocket-server'
+                        'websocket-server',
+                        'debugger'
                     ]
                 },
                 {

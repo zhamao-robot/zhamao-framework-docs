@@ -119,3 +119,25 @@ public function index($arg) {
 
 你可以将前后端分离的前端部分放入这里进行分发和部署。
 
+## 局部静态文件服务
+
+> 此功能 1.4 版本开始可用。
+
+上面的静态文件服务器为全局的，如果你只需要在一个路由下使用静态文件服务，则按照如下例子即可。
+
+注意要先 `use ZM\Http\StaticFileHandler;`
+
+```php
+/**
+ * @RequestMapping("/images/{filename}")
+ * @param $param
+ * @return StaticFileHandler
+ */
+public function staticImage($param) {
+  Console::info("[lexicon] " . $param["filename"]);
+  return new StaticFileHandler($param["filename"], "/path/to/your/images/");
+}
+```
+
+上面假设你在 `/path/to/your/images/` 这个目录下有大量的图片，比如你有 `a.jpg`，浏览器访问：`http://框架地址:端口/images/a.jpg` 就可以获取图片了。
+

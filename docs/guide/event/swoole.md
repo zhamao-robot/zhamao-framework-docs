@@ -81,3 +81,33 @@ public function onTick() {
 }
 ```
 
+::: warning 注意
+
+在计时器里，如果使用上下文 `ctx()` 的话，会报错，如果使用上下文，请先将当前协程上下文初始化，再使用。
+
+```php
+set_coroutine_params([]);
+```
+
+为了保持性能，计时器不采用任何封装，直接调用对应函数，一旦出现报错将被当作 fatal error，退出程序。在编写计时器内的代码时，应尤其注意代码的逻辑问题，尽量不要使用同步代码。
+
+:::
+
+## OnSave()
+
+> 此注解在 1.4 版本起可用。
+
+命名空间：`ZM\Annotation\Swoole\OnSave`
+
+框架中有定时储存缓存变量的 `@SaveBuffer`，这个注解绑定的函数将会在自动保存变量时被触发，可以保存你自己的复杂缓存结构。在执行终端命令 `save` 或调用 `DataProvider::saveBuffer()` 或定时保存时会触发。
+
+```php
+/**
+ * @OnSave()
+ */
+public function onSave() {
+  Console::info("正在保存...");
+  // write your code here.
+}
+```
+

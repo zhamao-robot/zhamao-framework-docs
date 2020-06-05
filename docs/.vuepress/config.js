@@ -67,7 +67,8 @@ module.exports = {
                         'component/zmutil',
                         'component/zmbuf',
                         'component/save-buffer',
-                        'component/zmrequest'
+                        'component/zmrequest',
+                        'component/zmwebsocket'
                     ]
                 }
             ],

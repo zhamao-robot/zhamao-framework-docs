@@ -9,7 +9,7 @@ sidebarDepth: 2
 一切都安装好后，你可以直接将框架运行起来了！
 
 ```bash
-php bin/start
+vendor/bin/start server
 ```
 
 如果看到 `=== Worker #0 已启动 ===` 字样，则表明框架一切正常：
@@ -87,7 +87,7 @@ php bin/start
 如果你使用的不是非常过时的 Linux 发行版，一般都会带有 **systemd**，你可以使用框架的生成脚本生成一个当前用户的用户态守护进程服务文件。
 
 ```bash
-php bin/systemd --generate
+vendor/bin/start systemd
 ```
 
 默认生成到 `resources/zhamao.service` 这个文件下。以 Ubuntu 18.04 为例，将这个文件拷贝到 `/etc/systemd/system/` 目录下，然后执行如下命令即可使用 systemd 进行框架的守护进程管理。
@@ -106,7 +106,7 @@ sudo systemctl stop zhamao.service
 如果你不想在以后一直常驻服务，而是临时变成守护进程，可以使用如下参数一键守护进程化：
 
 ```bash
-php bin/start server --daemon
+vendor/bin/start server --daemon
 ```
 
 ### 使用 screen / tmux
@@ -116,14 +116,14 @@ php bin/start server --daemon
 ```bash
 # 使用 screen
 screen -R zhamao
-php bin/start
+vendor/bin/start server
 # 使用 Ctrl+A, 再按 D 回到 shell
 # 重新回到 screen
 screen -x zhamao
 
 # 使用 tmux
 tmux new -s zhamao
-php bin/start
+vendor/bin/start server
 # 使用 Ctrl+B，再按 D 回到 shell
 # 重新回到 tmux
 tmux attach -t zhamao

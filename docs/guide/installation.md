@@ -6,8 +6,7 @@
 
 1. 安装 PHP
 2. 安装 Swoole、mbstring 等需要的 PHP 扩展
-3. 从 GitHub 拉取框架
-4. Composer 更新依赖
+3. 从 Composer 拉取框架
 
 ### Linux / Win10 (WSL) 
 
@@ -51,10 +50,8 @@ echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk 
 
 ```bash
 #部署框架
-git clone https://github.com/zhamao-robot/zhamao-framework.git
-#拉取依赖
-cd zhamao-framework/
-composer update
+composer create-project zhamao/framework-starter
+cd framework-starter
 ```
 
 ::: tip 框架需要额外安装的 PHP 扩展汇总

@@ -21,6 +21,8 @@
 php bin/start server --debug-mode
 # Phar方式启动
 php server.phar server --debug-mode
+# Composer 初始化项目启动
+vendor/bin/start server --debug-mode
 ```
 
 **下断点一句话：**

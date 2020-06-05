@@ -64,6 +64,12 @@ foreach($r as $k => $v) {
 }
 ```
 
+### 查询条数
+
+```php
+DB::table("admin")->where("name", "fake_admin")->count();
+```
+
 
 
 ## 直接执行 SQL 

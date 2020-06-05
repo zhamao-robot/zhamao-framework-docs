@@ -3,6 +3,23 @@ sidebar: auto
 ---
 # 更新日志
 
+## v1.5.1
+
+> 更新时间：2020.6.5
+
+- 新增：ZMRequest::request() 自定义构建 HTTP 请求方法
+- 修复：一个不会导致崩溃的 warning 提示
+
+## v1.5
+
+> 更新时间：2020.6.5
+
+- 重要变更：支持从 composer 使用框架
+- 新增：数据库 Select 选择器支持 `count()` 方法
+- 修复：ZMRequest 中 https 和端口的指定顺序问题
+- 新增：ZMWebSocket 创建 WS 链接的轻量级客户端
+- 修复：数据库异常的捕获更改为 PDOException
+
 ## v1.4
 
 > 更新时间：2020.5.23

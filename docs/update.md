@@ -3,6 +3,26 @@ sidebar: auto
 ---
 # 更新日志
 
+## v1.5.4
+
+> 更新时间：2020.6.13
+
+- 新增：`@CQCommand` 下支持 alias 参数
+- 更新：将 autoload 变为 composer autoload（需要重新 composer update）
+
+## v1.5.3
+
+> 更新时间：2020.6.10
+
+- 修复：在 Linux 系统下 Terminal 无法正常使用的 bug
+
+## v1.5.2
+
+> 更新时间：2020.6.8
+
+- 新增：`ZM_VERSION` 常量，对应为当前框架版本
+- 修复：部分链接不带 `/` 会导致 ZMRequest 模块报错的 bug
+
 ## v1.5.1
 
 > 更新时间：2020.6.5

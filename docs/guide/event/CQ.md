@@ -58,7 +58,7 @@ class Hello {
 - 名称：`@CQCommand`
 - 命名空间：`ZM\Annotation\CQ\CQCommand`
 - 用途：消息指令类上报触发
-- 支持的参数：`match`，`regexMatch`，`level` （有先后顺序）
+- 支持的参数：`match`，`regexMatch`，`alias`，`level` （有先后顺序）
 
 我们以参数 `match` 写一个简单的 demo：
 
@@ -109,6 +109,19 @@ class Hello {
 - 普通其他文字代表要匹配的文字
 
 例如：`*疫情怎么样了` ，效果就是，`上海疫情怎么样了` 这么问的时候，参数列表中就是 `上海`。多个星号就匹配多个参数，可以在文本内任意位置，不可两个星号放在一起匹配。
+
+**第三个参数** alias 是别名数组，如果有多个别名指令消息需要匹配，则使用即可：
+
+```php
+/**
+ * @CQCommand(match="你好",alias={"你好啊","你叫啥","你是啥"})
+ */
+public function hello() {
+  return "你好啊，我叫炸毛机器人！";
+}
+```
+
+> 别名在 1.5.4 版本起可用。
 
 ## CQNotice()
 

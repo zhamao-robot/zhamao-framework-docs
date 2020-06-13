@@ -46,12 +46,18 @@ echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk 
 #其他发行版可自行 Google 或 Bing 查询安装方法
 ```
 
-下载框架
+下载安装框架
 
 ```bash
-#部署框架
+# 方法1：从默认部署框架
 composer create-project zhamao/framework-starter
 cd framework-starter
+
+# 方法2：从composer初始化目录初始结构和配置文件（1.5.5 版本起可用）
+mkdir your-dir-name
+cd your-dir-name
+composer require zhamao/framework
+vendor/bin/start init
 ```
 
 ::: tip 框架需要额外安装的 PHP 扩展汇总

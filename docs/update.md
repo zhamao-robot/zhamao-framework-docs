@@ -3,6 +3,14 @@ sidebar: auto
 ---
 # 更新日志
 
+## v1.5.5
+
+> 更新时间：2020.6.13
+
+- 修复：`@SwooleEventAt("close")` 下不能使用 `ctx()->getConnection()` 获取链接对象的 bug
+- 新增：init 命令，可在 `composer require zhamao/framework` 后使用 `vendor/bin/start init` 初始化项目目录结构和配置文件
+- 更新：默认模块新增机器人断开连接的回调事件
+
 ## v1.5.4
 
 > 更新时间：2020.6.13

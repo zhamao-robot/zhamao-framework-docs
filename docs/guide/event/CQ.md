@@ -58,7 +58,7 @@ class Hello {
 - 名称：`@CQCommand`
 - 命名空间：`ZM\Annotation\CQ\CQCommand`
 - 用途：消息指令类上报触发
-- 支持的参数：`match`，`regexMatch`，`alias`，`level` （有先后顺序）
+  - 支持的参数：`match`，`regexMatch`，`alias`，`message_type`，`user_id`，`group_id`，`discuss_id`，`level` （有先后顺序）
 
 我们以参数 `match` 写一个简单的 demo：
 
@@ -122,6 +122,10 @@ public function hello() {
 ```
 
 > 别名在 1.5.4 版本起可用。
+
+后面几个 message_type 等参数和 `@CQMessage` 中的限定条件参数作用是一样的，比如你只希望此命令被私聊触发，那么写成 `@CQCommand(match="你好",message_type="private")` 。
+
+> 后几个限定参数的功能在 1.5.6 版本加入。
 
 ## CQNotice()
 

@@ -58,7 +58,7 @@ class Hello {
 - 名称：`@CQCommand`
 - 命名空间：`ZM\Annotation\CQ\CQCommand`
 - 用途：消息指令类上报触发
-  - 支持的参数：`match`，`regexMatch`，`alias`，`message_type`，`user_id`，`group_id`，`discuss_id`，`level` （有先后顺序）
+  - 支持的参数：`match`，`regexMatch`，`fullMatch`，`alias`，`message_type`，`user_id`，`group_id`，`discuss_id`，`level` （有先后顺序）
 
 我们以参数 `match` 写一个简单的 demo：
 
@@ -110,7 +110,26 @@ class Hello {
 
 例如：`*疫情怎么样了` ，效果就是，`上海疫情怎么样了` 这么问的时候，参数列表中就是 `上海`。多个星号就匹配多个参数，可以在文本内任意位置，不可两个星号放在一起匹配。
 
-**第三个参数** alias 是别名数组，如果有多个别名指令消息需要匹配，则使用即可：
+**第三个参数** `fullMatch` 是按全量的正则表达式匹配的结果，可以写正则表达式提取参数进行匹配，下面是个简单的时间匹配的例子：
+
+- 表达式：`@CQCommand(fullMatch="添加提醒 (\d+-\d+-\d+ \d+:\d+) (.*)")`
+- 可匹配：`添加提醒 2020-12-12 23:59 你好嘻嘻哈哈 xxx yyy`
+
+使用例子：
+
+```php
+/**
+ * @CQCommand(fullMatch="添加提醒 (\d+-\d+-\d+ \d+:\d+) (.*)")
+ */
+public function fullMatchFunc($arg) {
+  // $arg[0] -> "2020-12-12 23:59"
+  // $arg[1] -> "你好嘻嘻哈哈 xxx yyy"
+}
+```
+
+> fullMatch 在 1.5.8 版本起可用。
+
+第四个参数** alias 是别名数组，如果有多个别名指令消息需要匹配，则使用即可，注意只可以在使用 match 方式匹配时才能使用 alias：
 
 ```php
 /**

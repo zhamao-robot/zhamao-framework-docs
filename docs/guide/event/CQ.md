@@ -129,7 +129,7 @@ public function fullMatchFunc($arg) {
 
 > fullMatch 在 1.5.8 版本起可用。
 
-第四个参数** alias 是别名数组，如果有多个别名指令消息需要匹配，则使用即可，注意只可以在使用 match 方式匹配时才能使用 alias：
+**第四个参数** alias 是别名数组，如果有多个别名指令消息需要匹配，则使用即可，注意只可以在使用 match 方式匹配时才能使用 alias：
 
 ```php
 /**

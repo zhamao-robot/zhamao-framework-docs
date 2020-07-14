@@ -65,6 +65,7 @@ module.exports = {
                         'component/data-provider',
                         'component/console',
                         'component/zmutil',
+                        'component/global-functions',
                         'component/zmbuf',
                         'component/save-buffer',
                         'component/zmrequest',

@@ -29,6 +29,7 @@ vendor/bin/start server --debug-mode
 
 ```php
 eval(ZM_BREAKPOINT);
+// 或者简写：eval(BP);
 ```
 
 比如你在代码中，可以以这样的方式下断点：

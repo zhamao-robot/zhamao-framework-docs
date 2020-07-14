@@ -111,3 +111,53 @@ public function onSave() {
 }
 ```
 
+## OnEvent()
+
+> 此注解在 1.6 版本起可用。
+
+由于框架是用 Swoole 构建的，而框架内的注解事件是基于 Swoole 提供的事件扩展的，所以框架支持用户自定义所有类型的 Swoole Server 事件，详见 [Swoole 文档 - 事件](https://wiki.swoole.com/#/server/events)。
+
+但这个注解事件相对于上面其他任何注解的工作方式都是不同的。`@OnEvent` 注解的事件函数调用的进程可能不在 Worker 进程内，比如声明了 TaskWorker 进程的工作函数，代码就会在 TaskWorker 进程运行。有关 Swoole 进程概念，请见 [进阶 - 多进程](/advanced/multi-process.html)。
+
+下面是一个使用 Swoole 的 TaskWorker 进程的例子，大致功能是算每个数的平方：
+
+```php
+class CustomEvent  //假设在 src/Module/Example/CustomEvent.php 中
+{
+  /**
+   * @OnEvent("task")
+   */
+  public function onTask(\Swoole\Server $server, \Swoole\Server\Task $task) {
+    $task->finish(array_map(function ($x) {
+      return $x * $x; 
+    }, $task->data));
+	}
+}
+
+class Hello //假设在 src/Module/Example/Hello.php 中
+{
+  /**
+   * @CQCommand("test")
+   */
+  public function hello() {
+    $r = ZMBuf::$server->taskCo([[1,2,3,4]], 5); //这里会协程等待 TaskWorker 调用 finish
+    var_dump($r);
+  }
+}
+```
+
+写好代码后，需要在 `global.php` 配置文件的 `server_event_handler_class` 项中填入 CustomEvent 类的名称：
+
+```php
+$config['server_event_handler_class'] = [
+    \Framework\ServerEventHandler::class, //默认不可删除，否则会不能使用框架
+   	\Module\Example\CustomEvent::class
+];
+```
+
+::: warning 注意
+
+写在 `server_event_handler_class` 配置中的类，会在框架启动时候就加载到内存，不能通过 reload 进行重新加载，必须停止服务器后再运行才能加载。
+
+:::
+

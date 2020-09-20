@@ -3,6 +3,18 @@ sidebar: auto
 ---
 # 更新日志
 
+## v1.6.2
+
+> 更新时间：2020.7.27
+
+- 修复：不写配置 `server_event_handler_class` 项无法启动的 bug
+
+## v1.6.1
+
+> 更新时间：2020.7.26
+
+- 新增：`ZMRequest::downloadFile($url, $dst)` 方法，可直接将文件下载到本地
+
 ## v1.6
 
 > 更新时间：2020.7.14

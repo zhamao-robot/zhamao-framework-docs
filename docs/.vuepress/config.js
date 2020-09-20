@@ -1,6 +1,6 @@
 module.exports = {
     title: '炸毛框架',
-    description: '协程、高性能、多平台的 CQHTTP 框架',
+    description: '协程、高性能、多平台的 Web 机器人框架',
     markdown: {
         lineNumbers: true
     },

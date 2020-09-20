@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: /logo.png
-actionText: 查看文档
+heroImage: /logo_trans.png
+actionText: 查看指南
 actionLink: /guide/
 features:
 - title: 高性能

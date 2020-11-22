@@ -23,7 +23,8 @@ module.exports = {
             { text: '指南', link: '/guide/' },
             { text: '进阶', link: '/advanced/' },
             { text: 'FAQ', link: '/FAQ.md' },
-            { text: '更新日志', link: '/update.md' }
+            { text: '更新日志', link: '/update.md' },
+            { text: '炸毛框架v2', link: 'https://docs-v2.zhamao.xin/' }
         ],
         sidebar: {
             '/guide/': [

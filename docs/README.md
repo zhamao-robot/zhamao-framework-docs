@@ -12,3 +12,6 @@ features:
   details: 支持命令、普通文本、正则匹配、自然语言处理等多种对话解析方式，利用协程巧妙实现了直观的交互式会话模式，同时支持多种富文本的处理。
 footer: Apache-2.0 Licensed | Copyright © 2019-2020 CrazyBot
 ---
+
+本文档为 v1 旧版本框架，如需查看 v2 新版本，[点我](https://docs-v2.zhamao.xin/)。
+

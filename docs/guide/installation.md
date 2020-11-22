@@ -14,16 +14,16 @@
 #安装PHP >= 7.2（CLI + dev 版本）
 #Debian、Ubuntu（一句话安装php和swoole）
 apt-get update && apt-get install -y software-properties-common && \
-  add-apt-repository ppa:ondrej/php && \
-	apt-get update && \
-	apt-get install php php-dev php-mbstring gcc make openssl \
-		php-mbstring php-json php-curl php-mysql -y && \
-	apt-get install wget composer -y && \
-	wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz && \
-	tar -zxvf v4.5.0.tar.gz && \
-	cd swoole-src-4.5.0/ && \
-	phpize && ./configure --enable-openssl --enable-mysqlnd && make -j2 && make install && \
-	(echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}'))
+  add-apt-repository ppa:ondrej/php -y && \
+  apt-get update && \
+  apt-get install php php-dev php-mbstring gcc make openssl \
+  php-mbstring php-json php-curl php-mysql -y && \
+  apt-get install wget composer -y && \
+  wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz && \
+  tar -zxvf v4.5.0.tar.gz && \
+  cd swoole-src-4.5.0/ && \
+  phpize && ./configure --enable-openssl --enable-mysqlnd && make -j2 && make install && \
+  (echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk '{print $5}'))
 
 #CentOS(需要 >= 7) 使用的指令
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm

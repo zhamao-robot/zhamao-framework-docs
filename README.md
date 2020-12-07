@@ -1,6 +1,6 @@
 # zhamao-framework-docs
 
-炸毛框架文档 GitHub 仓库，项目采用 VuePress 构建。
+炸毛框架 v1.x 文档 GitHub 仓库，项目采用 VuePress 构建。
 ```bash
 # 安装依赖
 npm install vuepress

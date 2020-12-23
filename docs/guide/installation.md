@@ -33,9 +33,9 @@ yum install php72w-devel.x86_64 php72w-mbstring.x86_64 php72w-pear.noarch gcc gc
 # 方法1: PECL 安装 Swoole
 (sudo) pecl install swoole
 # 方法2: 源码编译安装 Swoole (使用最新版，把版本号替换为最新版即可)
-wget https://github.com/swoole/swoole-src/archive/v4.5.0.tar.gz
-tar -zxvf v4.5.0.tar.gz
-cd swoole-src-4.5.0
+wget https://github.com/swoole/swoole-src/archive/v4.5.9.tar.gz
+tar -zxvf v4.5.9.tar.gz
+cd swoole-src-4.5.9
 phpize
 ./configure --enable-openssl
 make -j2
@@ -50,13 +50,13 @@ echo "extension=swoole.so" >> $(php -i | grep "Loaded Configuration File" | awk 
 
 ```bash
 # 方法1：从默认部署框架
-composer create-project zhamao/framework-starter
+composer create-project zhamao/framework-starter:^1.4
 cd framework-starter
 
 # 方法2：从composer初始化目录初始结构和配置文件（1.5.5 版本起可用）
 mkdir your-dir-name
 cd your-dir-name
-composer require zhamao/framework
+composer require zhamao/framework:^1.6
 vendor/bin/start init
 ```
 
